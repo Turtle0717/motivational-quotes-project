@@ -2,25 +2,45 @@
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-// Array to hold quotes
+// Array to hold quote and source objects.
 var quotes = [
     {
         quote: "A person who never made a mistake never tried anything new.",
         source: "Albert Einstein"
+    },
+    {
+        quote: "I fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times.",
+        source: "Bruce Lee"
+    },
+    {
+        quote: "People should pursue what they're passionate about. That will make them happier than pretty much anything else.",
+        source: "Elon Musk"
+    },
+    {
+        quote: "It does not matter how slowly you go as long as you do not stop.",
+        source: "Confucius"
+    },
+    {
+        quote: "It's fine to celebrate success but it is more important to heed the lessons of failure.",
+        source: "Bill Gates"
     }
 ];
 
-//Function to generate a random number and returns a random quote object
-function getRandomQuote(quotes) {
-    var randomNumber = Math.floor(Math.random());
+var html = ""; //Holds quote message.
+
+//Function to generate a random number and returns a random quote object.
+function getRandomQuote() {
+    var randomNumber = Math.floor(Math.random() * 5);
     return quotes[randomNumber];
 }
 
 //Function to to call getRandomQuote function and print quote.
 function printQuote() {
     var quoteMessage = getRandomQuote(quotes);
-    var message = "<p class='quote'>" + quoteMessage.quote + "</p>" 
-    message += "<p class='source'>" + quoteMessage.source + "</p>";
-    message += "</p>";
-    document.getElementById('quote-box').innerHTML = message;
+    html = "<p class='quote'>" + quoteMessage.quote + "</p>";
+    html += "<p class='source'>" + quoteMessage.source + "</p>";
+    html += '<span class="citation">' + quoteMessage.citation + "</span>";
+    html += '<span class="year">' + quoteMessage.year + "</span>"
+    html += "</p>";
+    document.getElementById('quote-box').innerHTML = html;
 }
