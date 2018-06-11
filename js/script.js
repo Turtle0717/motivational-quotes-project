@@ -52,4 +52,6 @@ function printQuote() {
     html += "</p>";
     document.getElementById('quote-box').innerHTML = html;
 }
-console.log(printQuote);
+
+// Method to show new quote every 5 seconds.
+setInterval(printQuote, 5000);
