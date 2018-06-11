@@ -6,23 +6,28 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 var quotes = [
     {
         quote: "A person who never made a mistake never tried anything new.",
-        source: "Albert Einstein"
+        source: "Albert Einstein",
+        property: "Education"
     },
     {
         quote: "I fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times.",
-        source: "Bruce Lee"
+        source: "Bruce Lee",
+        property: "Inspirational"
     },
     {
         quote: "People should pursue what they're passionate about. That will make them happier than pretty much anything else.",
-        source: "Elon Musk"
+        source: "Elon Musk",
+        property: "Passion"
     },
     {
         quote: "It does not matter how slowly you go as long as you do not stop.",
-        source: "Confucius"
+        source: "Confucius",
+        property: "Proverb"
     },
     {
         quote: "It's fine to celebrate success but it is more important to heed the lessons of failure.",
-        source: "Bill Gates"
+        source: "Bill Gates",
+        property: "Failure"
     }
 ];
 
@@ -49,9 +54,10 @@ function printQuote() {
     var quoteMessage = getRandomQuote(quotes);
     html = "<p class='quote'>" + quoteMessage.quote + "</p>";
     html += "<p class='source'>" + quoteMessage.source + "</p>";
+    html += "<p class='property'>" + quoteMessage.property + "</p>";
     html += "</p>";
     document.getElementById('quote-box').innerHTML = html;
 }
 
-// Method to show new quote every 5 seconds.
-setInterval(printQuote, 5000);
+// Method to show new quote every 30 seconds.
+setInterval(printQuote, 30000);
