@@ -34,13 +34,22 @@ function getRandomQuote() {
     return quotes[randomNumber];
 }
 
-//Function to to call getRandomQuote function and print quote.
+//Function to generate a random number from 0 - 255 and returns the random number.
+function getRandomColorNumber(){
+    var randomNumber = (Math.random()* 256);
+    return randomNumber;
+}
+
+/*
+Function to to call getRandomQuote function and print quote.
+Changes body background color on button click.
+*/
 function printQuote() {
+    document.body.style.backgroundColor = "rgb(" + getRandomColorNumber() + "," + getRandomColorNumber() + "," + getRandomColorNumber() + ")";
     var quoteMessage = getRandomQuote(quotes);
     html = "<p class='quote'>" + quoteMessage.quote + "</p>";
     html += "<p class='source'>" + quoteMessage.source + "</p>";
-    html += '<span class="citation">' + quoteMessage.citation + "</span>";
-    html += '<span class="year">' + quoteMessage.year + "</span>"
     html += "</p>";
     document.getElementById('quote-box').innerHTML = html;
 }
+console.log(printQuote);
