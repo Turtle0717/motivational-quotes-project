@@ -1,9 +1,5 @@
-// event listener to respond to "Show another quote" button clicks
-// when user clicks anywhere on the button, the "printQuote" function is called
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-// Array to hold quote and source objects.
-var quotes = [
+// Array to hold quote, source, and property objects.
+const quotes = [
     {
         quote: "A person who never made a mistake never tried anything new.",
         source: "Albert Einstein",
@@ -31,17 +27,17 @@ var quotes = [
     }
 ];
 
-var html = ""; //Holds quote message.
+let html = ""; //Holds quote message.
 
 //Function to generate a random number and returns a random quote object.
-function getRandomQuote() {
-    var randomNumber = Math.floor(Math.random() * 5);
+const getRandomQuote = () => {
+    const randomNumber = Math.floor(Math.random() * 5);
     return quotes[randomNumber];
 }
 
 //Function to generate a random number from 0 - 255 and returns the random number.
-function getRandomColorNumber(){
-    var randomNumber = (Math.random()* 256);
+const getRandomColorNumber = () => {
+    const randomNumber = (Math.random()* 256);
     return randomNumber;
 }
 
@@ -49,15 +45,19 @@ function getRandomColorNumber(){
 Function to to call getRandomQuote function and print quote.
 Changes body background color on button click.
 */
-function printQuote() {
+const printQuote = () => {
     document.body.style.backgroundColor = "rgb(" + getRandomColorNumber() + "," + getRandomColorNumber() + "," + getRandomColorNumber() + ")";
-    var quoteMessage = getRandomQuote(quotes);
+    const quoteMessage = getRandomQuote(quotes);
     html = "<p class='quote'>" + quoteMessage.quote + "</p>";
     html += "<p class='source'>" + quoteMessage.source + "</p>";
     html += "<p class='property'>" + quoteMessage.property + "</p>";
     html += "</p>";
     document.getElementById('quote-box').innerHTML = html;
 }
+
+// event listener to respond to "Show another quote" button clicks
+// when user clicks anywhere on the button, the "printQuote" function is called
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 // Method to show new quote every 30 seconds.
 setInterval(printQuote, 30000);
